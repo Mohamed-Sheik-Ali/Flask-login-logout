@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title%} Home {% endblock %}
+{% block content %}
+<div class="content">
+    <br>
+    <h1 style="text-align: center;">Welcome to Task Master</h1>
+    <ul class="list-group list-group-flush" id="tasks">
+        {% for task in user.tasks %}
+        <li class="list-group-item">
+            {{ task.content }}
+            <button type="submit" class="close" onClick="deleteTask({{ task.id }})">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </li>
+        {% endfor %}
+    </ul>
+    <form method='POST'>
+        
+        <textarea name="task" id="task" class="form-control"></textarea>
+        <br>
+        <div align="center">
+            <button type="submit" class="btn btn-primary">Add Task</button>
+        </div>
+    </form>
+    
+</div>
+{% endblock %}
